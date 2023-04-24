@@ -1,23 +1,26 @@
 <?php
 modConnect();
 
-try {
-    $stmt = $conn->prepare("SELECT * FROM producte");
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC); // set the resulting array to associative
-    echo "<table>";
-    echo "<tr><td>ID</td><td>Nom</td><td>Cognoms</td><td>Data naixement</td></tr>";
-    foreach($result as $row) {
-    echo "<tr>";
-    $url = $row['foto'];
-    echo "<td>".$row['id']."</td><td>".$row['nom']."</td><td>".$row['descripcio']."</td><td>".$row['preu']."</td><td>"."<img src=$url>"."</td><td>".$row['stock']."</td><td>".$row['menu']."</td>";
-    echo "</tr>";
-    }
-    echo "</table>";
-    }
-    catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
-    }
+function mostrarProducte() {
+    try {
+        $stmt = $GLOBALS['conn']->prepare("SELECT * FROM producte");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC); // set the resulting array to associative
+        echo "<table>";
+        echo "<tr><td>ID</td><td>Nom</td><td>Cognoms</td><td>Data naixement</td></tr>";
+        foreach($result as $row) {
+        echo "<tr>";
+        $url = $row['foto'];
+        echo "<td>".$row['id']."</td><td>".$row['nom']."</td><td>".$row['descripcio']."</td><td>".$row['preu']."</td><td>"."<img src=$url>"."</td><td>".$row['stock']."</td><td>".$row['menu']."</td>";
+        echo "</tr>";
+        }
+        echo "</table>";
+        }
+        catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        }
+}
+
     
 
 

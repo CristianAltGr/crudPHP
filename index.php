@@ -1,6 +1,6 @@
 <?php
 
-require("./controllers/defaultController.php")
+require("./controllers/defaultController.php");
 
 
 ?>

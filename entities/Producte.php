@@ -39,6 +39,10 @@ function modConnect()
 		}
 	}
 
+    function modificarProducte() {
+        
+    }
+
     
 
 ?>

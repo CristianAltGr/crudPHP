@@ -4,7 +4,6 @@
 echo "holasfasf";
 require("./entities/Producte.php");
 require("./entities/User.php");
-listUsers();
 function listUsers(){
     //va a ser una variable
     $users = getUsers();

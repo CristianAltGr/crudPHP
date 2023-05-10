@@ -13,6 +13,13 @@
     <?php
     require("./controllers/defaultController.php");
 
+    if (isset($_GET['action'])) {
+
+    } else if (isset($_POST['action'])) {
+
+    } else {
+        listUsers();
+    }
 
     ?>
 </body>

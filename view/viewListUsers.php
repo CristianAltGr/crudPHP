@@ -1,40 +1,32 @@
+<div class="table-responsive-sm">
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th class="align-middle">ID</th>
+							<th class="align-middle">NOM</th>
+							<th class="align-middle">ROL</th>
+							<th class="align-middle">USUARI</th>
+							<th class="align-middle text-right"><a class="btn btn-primary" role="button" href="?action=new">Afegir</a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							foreach($users as $row) {
+								echo "<tr>";
+								echo "<td class='align-middle'>" . $row['id'] . "</td>";
+								echo "<td class='align-middle'>" . $row['nom'] . "</td>";
+								echo "<td class='align-middle'>" . $row['rol'] . "</td>";
+								echo "<td class='align-middle'>" . $row['usuari'] . "</td>";
 
-		<div class="container">
-			<div class="py-5 text-center">
-				<h1>Vista de dades d'users</h1>
-				</div>
-			<div class="alert alert-success text-center" role="alert">
-			</div>
-			<div class="text-left">
-				<form>
-					<div class="form-group row">
-						<label for="id" class="col-sm-2 col-form-label font-weight-bold">Id</label>
-						<div class="col-sm-10">
-							<input type="text" readonly class="form-control-plaintext" id="id" value="<?php echo $users[0]['id']; ?>">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="nom" class="col-sm-2 col-form-label font-weight-bold">Nom</label>
-						<div class="col-sm-10">
-							<input type="text" readonly class="form-control-plaintext" id="Nom" value="<?php echo $users[0]['nom']; ?>">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="Data_naixement" class="col-sm-2 col-form-label font-weight-bold">Rol</label>
-						<div class="col-sm-10">
-							<input type="text" readonly class="form-control-plaintext" id="Data_naixement" value="<?php echo $users[0]['rol']; ?>">
-						</div>
-					</div>
-
-					<div class="form-group row">
-						<label for="ensenyament" class="col-sm-2 col-form-label font-weight-bold">Usuari</label>
-						<div class="col-sm-10">
-							<input type="text" readonly class="form-control-plaintext" id="ensenyament" value="<?php echo $users[0]['usuari']; ?>">
-						</div>
-					</div>
-					<div class="text-right">
-						<a class="btn btn-primary" role="button" href="./index.php">Afegir</a>
-					</div>
-				</form>				
+								echo "<td class='align-middle'>";
+								echo "<a class='btn btn-success' role='button' href='?action=show&id=".$row['id']."'>Mostrar</a> ";
+								echo "<a class='btn btn-warning' role='button' href='?action=edit&id=".$row['id']."'>Editar</a> ";
+								echo "<a class='btn btn-danger' role='button' href='?action=delete&id=".$row['id']."'>Eliminar</a> ";
+								echo "</td>";
+								echo "</tr>";
+							}
+						?>
+					</tbody>
+				</table>
 			</div>
 		</div>

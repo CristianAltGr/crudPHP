@@ -6,14 +6,7 @@ function mostrarProducte() {
         $stmt = $GLOBALS['conn']->prepare("SELECT * FROM producte");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC); // set the resulting array to associative
-       echo "<div>";
-        foreach($result as $row) {
-        echo "<div>";
-        $url = $row['foto'];
-        echo "<td>".$row['nom']."</td><td>".$row['descripcio']."</td><td>".$row['preu']."</td><td>"."<img src=$url>"."</td><td>".$row['stock']."</td><td>".$row['menu']."</td><td>".$row['mides']."</td>";
-        echo "<div>" ;
-        }
-        echo "</div>";
+       
         }
         catch(PDOException $e) {
         echo "Error: " . $e->getMessage();

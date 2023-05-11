@@ -12,14 +12,31 @@
     <!-- Falta header-->
     <?php
     require("./controllers/defaultController.php");
+    
+    if(isset($_GET['action'])) {
+        
+        $accio = $_GET['action'];
 
-    if (isset($_GET['action'])) {
+        if ($accio == 'show') {
+            echo "show";
 
-    } else if (isset($_POST['action'])) {
+        } else if($accio == 'edit') {
 
+            echo "edit";
+
+        } else if($accio == 'delete') {
+
+            echo "delete";
+        } else if ($accio == 'new') {
+            echo "new";
+        }
+        
     } else {
         listUsers();
     }
+
+    
+    
 
     ?>
 </body>

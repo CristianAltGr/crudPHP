@@ -1,17 +1,6 @@
 <?php
 
-function getProducte() {
-	modConnect();
-    try {
-        $stmt = $GLOBALS['conn']->prepare("SELECT * FROM producte");
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC); // set the resulting array to associative
-       
-        }
-        catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
-        }
-}
+
 
     
 function modConnect()
@@ -35,6 +24,19 @@ function modConnect()
     function modificarProducte() {
         
     }
+
+	function getProducts() {
+		modConnect();
+		try {
+			$stmt = $GLOBALS['conn']->prepare("SELECT * FROM producte");
+			$stmt->execute();
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC); // set the resulting array to associative
+			return $result;
+			}
+			catch(PDOException $e) {
+			echo "Error: " . $e->getMessage();
+			}
+	}
 
     
 

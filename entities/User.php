@@ -1,6 +1,6 @@
 <?php
 
-function modConnect1()
+function modConnectUser()
 {
 	$servername = "localhost";
 	$username = "root";
@@ -19,6 +19,7 @@ function modConnect1()
 
 function getUsers()
 {
+	modConnect1();
 	try {
 		$stmt = $GLOBALS['conn']->prepare("SELECT * FROM user");
 		$stmt->execute();
@@ -32,6 +33,7 @@ function getUsers()
 
 function getUser($id)
 {
+	modConnect();
 
 	try {
 		if ($id != null) {
@@ -63,6 +65,21 @@ function modDelete($id)
 	} catch (PDOException $e) {
 		return ["Error" => $e->getMessage()];
 	}
+function modDelete($id) {
+    modConnectUser();
+    try {
+        $sql = "DELETE FROM user WHERE id=".$id;
+        // use exec() because no results are returned
+        if ($GLOBALS['conn']->exec($sql)){
+            return ["Success" => "Usuari eliminat correctament"];
+        }
+        else {
+            return ["Error" => "L'usuari no s'ha eliminat"];
+        }
+    }
+    catch(PDOException $e) {
+        return ["Error" => $e->getMessage()];
+    }
 
 }
 
@@ -81,6 +98,22 @@ function modUpdateUser($id, $nom, $rol, $usuari)
 	} catch (PDOException $e) {
 		return ["Error" => $e->getMessage()];
 	}
+function modUpdateUser($id, $nom, $rol, $usuari) {
+    modConnectUser();
+		
+		try {
+			$sql = "UPDATE user SET nom='" . $nom . "', rol='" . $rol . "', usuari='" . $usuari . "'  WHERE id='" . $id . "'";
+			// use exec() because no results are returned
+			if ($GLOBALS['conn']->exec($sql)) {
+				return ["Success" => "Usuari modificat correctament"];
+			}
+			else {
+				return ["Error" => "L'usuari no s'ha modificat"];
+			}
+		}
+		catch(PDOException $e) {
+			return ["Error" => $e->getMessage()];
+		}
 
 }
 

@@ -8,4 +8,25 @@ function listUsers(){
     $users = getUsers();
     require("./view/viewListUsers.php");
 }
+
+
+function deleteUser($id) {
+    modDelete($id);
+    require_once("./entities/User.php");
+
+
+}
+function upUser($id, $nom, $rol, $usuari)
+	{
+		return modUpdateUser($id, $nom, $rol, $usuari);
+	}
+function loadMainView() {
+    listUsers();
+}
+
+function loadEditUserView($id)
+	{
+		$result = getUser($id);
+		require_once("./view/viewUserModify.php");
+	}
 ?>

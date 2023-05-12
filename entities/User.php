@@ -28,3 +28,62 @@ function getUsers() {
             echo "Error: " . $e->getMessage();
             }
 }
+
+
+function getUser($id) {
+    modConnect();
+		
+		try {
+			if ($id != null) {
+				$stmt = $GLOBALS['conn']->prepare("SELECT * FROM user WHERE id=" . $id); 
+			}
+			else {
+				$stmt = $GLOBALS['conn']->prepare("SELECT * FROM user ORDER BY id ASC"); 
+			}
+			$stmt->execute();
+
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			
+			return $result;
+		}
+		catch(PDOException $e) {
+			return ["Error" => $e->getMessage()];
+		}
+}
+
+function modDelete($id) {
+    modConnect1();
+    try {
+        $sql = "DELETE FROM user WHERE id=".$id;
+        // use exec() because no results are returned
+        if ($GLOBALS['conn']->exec($sql)){
+            return ["Success" => "Usuari eliminat correctament"];
+        }
+        else {
+            return ["Error" => "L'usuari no s'ha eliminat"];
+        }
+    }
+    catch(PDOException $e) {
+        return ["Error" => $e->getMessage()];
+    }
+
+}
+
+function modUpdateUser($id, $nom, $rol, $usuari) {
+    modConnect();
+		
+		try {
+			$sql = "UPDATE user SET nom='" . $nom . "', rol='" . $rol . "', usuari='" . $usuari . "'  WHERE id='" . $id . "'";
+			// use exec() because no results are returned
+			if ($GLOBALS['conn']->exec($sql)) {
+				return ["Success" => "Usuari modificat correctament"];
+			}
+			else {
+				return ["Error" => "L'usuari no s'ha modificat"];
+			}
+		}
+		catch(PDOException $e) {
+			return ["Error" => $e->getMessage()];
+		}
+
+}

@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="./assets/kebabcion.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Original Kebab House </title>
 </head>
 
@@ -19,7 +20,6 @@
         <h1>Original Kebab House</h1>
     </header>
     <div class="container">
-        <!-- Falta header-->
         <?php
         require("./controllers/defaultController.php");
 
@@ -30,15 +30,11 @@
 
             if ($accio == 'show') {
                 loadShowUserView($_GET['id']);
-                echo "show";
-
             } else if ($accio == 'edit') {
 
                 if (isset($_GET['id'])) {
                     loadEditUserView($_GET['id']);
                 }
-                echo "edit";
-
             } else if ($accio == 'delete') {
 
                 if (isset($_GET['id'])) {
@@ -48,7 +44,6 @@
 
             } else if ($accio == 'new') {
                 loadNewUserView();
-                echo "new";
             }
 
         } else if (isset($_POST['action'])) {
@@ -78,7 +73,6 @@
         } else {
             loadMainView();
         }
-
         ?>
     </div>
 </body>

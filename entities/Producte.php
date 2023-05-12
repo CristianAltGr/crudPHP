@@ -3,7 +3,7 @@
 
 
     
-function modConnect()
+function modConnectProducte()
 	{
 		$servername = "localhost";
 		$username = "root";
@@ -26,7 +26,7 @@ function modConnect()
     }
 
 	function getProducts() {
-		modConnect();
+		modConnectProducte();
 		try {
 			$stmt = $GLOBALS['conn']->prepare("SELECT * FROM producte");
 			$stmt->execute();

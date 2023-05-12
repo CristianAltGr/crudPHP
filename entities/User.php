@@ -1,6 +1,6 @@
 <?php
 
-function modConnect1()
+function modConnectUser()
 {
     $servername = "localhost";
     $username = "root";
@@ -19,7 +19,7 @@ function modConnect1()
 }
 
 function getUsers() {
-	modConnect1();
+	modConnectUser();
         try {
             $stmt = $GLOBALS['conn']->prepare("SELECT * FROM user");
             $stmt->execute();
@@ -33,7 +33,7 @@ function getUsers() {
 
 
 function getUser($id) {
-    modConnect();
+    modConnectUser();
 		
 		try {
 			if ($id != null) {
@@ -54,7 +54,7 @@ function getUser($id) {
 }
 
 function modDelete($id) {
-    modConnect1();
+    modConnectUser();
     try {
         $sql = "DELETE FROM user WHERE id=".$id;
         // use exec() because no results are returned
@@ -72,7 +72,7 @@ function modDelete($id) {
 }
 
 function modUpdateUser($id, $nom, $rol, $usuari) {
-    modConnect();
+    modConnectUser();
 		
 		try {
 			$sql = "UPDATE user SET nom='" . $nom . "', rol='" . $rol . "', usuari='" . $usuari . "'  WHERE id='" . $id . "'";

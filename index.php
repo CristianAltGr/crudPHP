@@ -13,11 +13,13 @@
     <?php
     require("./controllers/defaultController.php");
     
+    
     if(isset($_GET['action'])) {
         
         $accio = $_GET['action'];
 
         if ($accio == 'show') {
+            loadShowUserView($_GET['id']);
             echo "show";
 
         } else if($accio == 'edit') {
@@ -58,6 +60,7 @@
 			if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
 				upUser($_POST['id'], $_POST['nom'], $_POST['rol'], $_POST['usuari']);
                 echo "action up";
+                unset($_POST);
 			} else {
             }
 			loadMainView();

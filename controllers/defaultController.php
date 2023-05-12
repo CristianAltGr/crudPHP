@@ -22,7 +22,11 @@ function upUser($id, $nom, $rol, $usuari)
 	}
 
     function addUser($nom, $rol, $usuari) {
+        // para quitar los datos de $_POST, he probado con unset($_POST) pero no funciona
+        //el header evita q cuando se actualize la pagina se repitan los mismos inserts
+        header('Location: index.php');
         return modAddUser($nom, $rol, $usuari);
+
     }
 function loadMainView() {
     listUsers();
@@ -38,6 +42,11 @@ function loadEditUserView($id)
 	{
 		require_once("./view/viewNewUser.php");
 	}
+
+    function loadShowUserView($id) {
+        $users = getUser($id);
+        require_once("./view/viewUser.php");
+    }
 
 
 

@@ -32,9 +32,6 @@
                 <input type="text" readonly class="form-control-plaintext" id="ensenyament" value="<?php echo $users[0]['usuari']; ?>">
             </div>
         </div>
-        <div class="text-right">
-            <a class="btn btn-primary" role="button" href="./index.php">Afegir</a>
-        </div>
     </form>				
 </div>
 </div>

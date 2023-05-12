@@ -20,7 +20,7 @@
 								echo "<td class='align-middle'>" . $row['id'] . "</td>";
 								echo "<td class='align-middle'>" . $row['nom'] . "</td>";
 								echo "<td class='align-middle'>" . $row['descripcio'] . "</td>";
-								echo "<td class='align-middle'>" . $row['preu'] . "</td>";
+								echo "<td class='align-middle'> " . $row['preu'] . "</td>";
 								echo "<td class='align-middle'>" . $row['foto'] . "</td>";
 								echo "<td class='align-middle'>" . $row['stock'] . "</td>";
 								echo "<td class='align-middle'>" . $row['menu'] . "</td>";

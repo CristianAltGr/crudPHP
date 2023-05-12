@@ -22,7 +22,7 @@ function modConnectProducte()
 	}
 
     function modificarProducte() {
-        
+        modConnectProducte();
     }
 
 	function getProducts() {

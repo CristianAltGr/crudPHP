@@ -72,7 +72,7 @@ function modDelete($id) {
 }
 
 function modUpdateUser($id, $nom, $rol, $usuari) {
-    modConnect();
+    modConnectUser();
 		
 		try {
 			$sql = "UPDATE user SET nom='" . $nom . "', rol='" . $rol . "', usuari='" . $usuari . "'  WHERE id='" . $id . "'";
@@ -92,7 +92,7 @@ function modUpdateUser($id, $nom, $rol, $usuari) {
 
 
 function modAddUser($nom, $rol, $usuari) {
-    modConnect();
+    modConnectUser();
 		
 		try {
 			$sql = "INSERT INTO user (nom, rol, usuari) VALUES ('" . $nom . "', '" . $rol . "', '" . $usuari ."')";

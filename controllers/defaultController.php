@@ -3,6 +3,7 @@
  */
 require("./entities/Producte.php");
 require("./entities/User.php");
+listProducts();
 function listUsers()
 {
     //va a ser una variable
@@ -12,7 +13,7 @@ function listUsers()
 
 function listProducts() {
     $producte = getProducts();
-    require("./view/viewListProducte.php");
+    require("./view/viewListProducts.php");
 }
 
 

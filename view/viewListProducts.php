@@ -16,12 +16,13 @@
 					<tbody>
 						<?php
 							foreach($producte as $row) {
+                                
 								echo "<tr>";
 								echo "<td class='align-middle'>" . $row['id'] . "</td>";
 								echo "<td class='align-middle'>" . $row['nom'] . "</td>";
 								echo "<td class='align-middle'>" . $row['descripcio'] . "</td>";
 								echo "<td class='align-middle'> " . $row['preu'] . "</td>";
-								echo "<td class='align-middle'>" . $row['foto'] . "</td>";
+                                echo "<td class='align-middle'> <img src='" . $row['foto'] . "' id='imgProducte'></img></td>";
 								echo "<td class='align-middle'>" . $row['stock'] . "</td>";
 								echo "<td class='align-middle'>" . $row['menu'] . "</td>";
 								echo "<td class='align-middle'>" . $row['mides'] . "</td>";

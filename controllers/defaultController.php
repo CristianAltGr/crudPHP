@@ -9,6 +9,11 @@ function listUsers(){
     require("./view/viewListUsers.php");
 }
 
+function listProducts() {
+    $producte = getProducts();
+    require("./view/viewListProducte.php");
+}
+
 
 function deleteUser($id) {
     modDelete($id);

@@ -1,4 +1,5 @@
 <?php
+
 function modConnect1()
 {
     $servername = "localhost";
@@ -18,6 +19,7 @@ function modConnect1()
 }
 
 function getUsers() {
+	modConnect1();
         try {
             $stmt = $GLOBALS['conn']->prepare("SELECT * FROM user");
             $stmt->execute();

@@ -1,7 +1,7 @@
 <?php
-modConnect();
-mostrarProducte();
-function mostrarProducte() {
+
+function getProducte() {
+	modConnect();
     try {
         $stmt = $GLOBALS['conn']->prepare("SELECT * FROM producte");
         $stmt->execute();

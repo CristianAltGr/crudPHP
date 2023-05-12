@@ -1,9 +1,19 @@
 #fotoHeader {
-    width: 30px;
-    height: 30px;
+    width: 8em;
+    height: 8em;
+    border-radius: 30%;
 }
 
-#imgProducte{
+header {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    margin-left: 5%;
+}
+
+#imgProducte {
     width: 300px;
     height: 300px;
 }

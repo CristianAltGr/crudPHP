@@ -87,3 +87,22 @@ function modUpdateUser($id, $nom, $rol, $usuari) {
 		}
 
 }
+
+
+function modAddUser($nom, $rol, $usuari) {
+    modConnect();
+		
+		try {
+			$sql = "INSERT INTO user (nom, rol, usuari) VALUES ('" . $nom . "', '" . $rol . "', '" . $usuari ."')";
+			// use exec() because no results are returned
+			if ($GLOBALS['conn']->exec($sql)) {
+				return ["Success" => "Usuari afegit correctament"];
+			}
+			else {
+				return ["Error" => "L'usuari no s'ha afegit"];
+			}
+		}
+		catch(PDOException $e) {
+			return ["Error" => $e->getMessage()];
+		}
+}

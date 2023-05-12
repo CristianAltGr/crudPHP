@@ -35,8 +35,8 @@
 							<?php
 							$rol = $result[0]['rol']; 
 							echo '<select name="rol" id="rol" class="form-control" required>';
-							echo "<option value='ASIX'" . ($ensenyament == 'admin' ? 'selected' : '') . ">Admin</option>";
-							echo "<option value='DAM'" . ($ensenyament == 'editor' ? 'selected' : '') . ">DAM</option>";
+							echo "<option value='admin'" . ($rol == 'admin' ? 'selected' : '') . ">Admin</option>";
+							echo "<option value='editor'" . ($rol == 'editor' ? 'selected' : '') . ">editor</option>";
 							echo "</select>";
 							?>
 						</div>

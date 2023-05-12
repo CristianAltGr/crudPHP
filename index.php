@@ -35,6 +35,7 @@
             loadMainView();
 
         } else if ($accio == 'new') {
+            loadNewUserView();
             echo "new";
         }
         
@@ -46,7 +47,7 @@
 			$msg = null;
 			
 			if (isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
-				$msg = addAlumne($_POST['Nom'], $_POST['Cognoms'], $_POST['Data_naixement'], $_POST['ensenyament']);
+				$msg = addUser($_POST['nom'], $_POST['rol'], $_POST['usuari']);
 			} else {  
 				echo "no va jefe";
 			}

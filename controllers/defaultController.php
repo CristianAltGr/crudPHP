@@ -20,6 +20,10 @@ function upUser($id, $nom, $rol, $usuari)
 	{
 		return modUpdateUser($id, $nom, $rol, $usuari);
 	}
+
+    function addUser($nom, $rol, $usuari) {
+        return modAddUser($nom, $rol, $usuari);
+    }
 function loadMainView() {
     listUsers();
 }
@@ -29,4 +33,12 @@ function loadEditUserView($id)
 		$result = getUser($id);
 		require_once("./view/viewUserModify.php");
 	}
+
+    function loadNewUserView()
+	{
+		require_once("./view/viewNewUser.php");
+	}
+
+
+
 ?>

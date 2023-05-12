@@ -33,8 +33,10 @@ function addUser($nom, $rol, $usuari)
 {
     // para quitar los datos de $_POST, he probado con unset($_POST) pero no funciona
     //el header evita q cuando se actualize la pagina se repitan los mismos inserts
-    header('Location: index.php');
-    return modAddUser($nom, $rol, $usuari);
+    $self = $_SERVER['PHP_SELF'];
+    modAddUser($nom, $rol, $usuari);
+    header("location: $self");
+
 
 }
 function loadMainView()

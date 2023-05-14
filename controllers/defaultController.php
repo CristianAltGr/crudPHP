@@ -8,12 +8,12 @@ function listUsers()
 {
     //va a ser una variable
     $users = getUsers();
-    require("./view/viewListUsers.php");
+    require_once("./view/viewListUsers.php");
 }
 
 function listProducts() {
     $producte = getProducts();
-    require("./view/viewListProducts.php");
+    require_once("./view/viewListProducts.php");
 }
 
 
@@ -39,6 +39,7 @@ function addUser($nom, $rol, $usuari)
 function loadMainView()
 {
     listUsers();
+    listProducts();
 }
 
 function loadEditUserView($id)
@@ -75,6 +76,21 @@ function deleteProd($id) {
     require_once("./entities/Producte.php");
 
 }
+
+function loadNewProdView() {
+    require_once("./view/viewNewProduct.php");
+}
+
+function addProducte($nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides) {
+    modAddProducte($nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides);
+
+}
+
+function upProd($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides) {
+    modUpProducte($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides);
+
+}
+
 
 
 ?>

@@ -76,4 +76,42 @@ function modConnectProducte()
 		}
 	}
 
+	function modAddProducte($nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides){
+		modConnectProducte();
+		
+		try {
+			$sql = "INSERT INTO producte (nom, descripcio, preu, foto, stock, menu, mides) VALUES ('" . $nomProd . "', '" . $descripcio . "', '" .$preu ."', '" . $foto ."', '" .$stock . "', '" . $menu . "', '" . $mides ."')";
+			// use exec() because no results are returned
+			if ($GLOBALS['conn']->exec($sql)) {
+				return ["Success" => "Producte afegit correctament"];
+			}
+			else {
+				return ["Error" => "El producte no s'ha afegit"];
+			}
+		}
+		catch(PDOException $e) {
+			return ["Error" => $e->getMessage()];
+		}
+	}
+
+	function modUpProducte($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides) {
+		modConnectProducte();
+			
+			try {
+				$sql = "UPDATE producte SET nom='" . $nomProd . "', descripcio='" . $descripcio . "', preu='" . $preu . "', foto='" . $foto . "', stock='" .$stock."', menu='".$menu ."', mides='" . $mides."'  WHERE id='" . $id . "'";
+				// use exec() because no results are returned
+				if ($GLOBALS['conn']->exec($sql)) {
+					return ["Success" => "Producte modificat correctament"];
+	
+				}
+				else {
+					return ["Error" => "L'usuari no s'ha modificat"];
+				}
+			}
+			catch(PDOException $e) {
+				return ["Error" => $e->getMessage()];
+			}
+	
+	}
+
 ?>

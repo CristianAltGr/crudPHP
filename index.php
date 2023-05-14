@@ -60,9 +60,10 @@
                 }
                 loadMainView();
             } else if ($accio == 'newProd') {
-                
+                loadNewProdView();
             }
 
+            //POST
         } else if (isset($_POST['action'])) {
             if ($_POST['action'] == 'add') {
                 // Exemple de com utilitzar els missatges que el model ens retorna.
@@ -82,58 +83,27 @@
                     echo "action up";
                     unset($_POST);
                 } else {
+                    loadMainView();
+
                 }
                 loadMainView();
             }else if($_POST['action'] == 'addProd') {
-
-            }
-            //POST AND GET PRODUCTE
-            //POST AND GET PRODUCTE
-        }else if (isset($_GET['action'])) {
-
-            $accio = $_GET['action'];
-
-            if ($accio == 'showProd') {
-                loadShowProducteView($_GET['id']);
-            } else if ($accio == 'editProd') {
-
-                if (isset($_GET['id'])) {
-                    loadEditUserView($_GET['id']);
-                }
-            } else if ($accio == 'deleteProd') {
-
-                if (isset($_GET['id'])) {
-                    deleteUser($_GET['id']);
-                }
-                loadMainView();
-
-            } else if ($accio == 'newProd') {
-          
-            }
-
-        } else if (isset($_POST['action'])) {
-            if ($_POST['action'] == 'addProd') {
-             
                 $msg = null;
 
-                if (isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
-                    $msg = addUser($_POST['nom'], $_POST['rol'], $_POST['usuari']);
-                    header('Location: index.php');
-                } else {
-                    echo "no va jefe";
+                if (isset($_POST['nomProd']) && isset($_POST['descripcio']) && isset($_POST['preu']) && isset($_POST['foto']) && isset($_POST['stock']) && isset($_POST['menu']) && isset($_POST['mida'])) {
+                    addProducte($_POST['nom'], $_POST['descripcio'],$_POST['preu'] ,$_POST['foto'],$_POST['stock'], $_POST['menu'],$_POST['mida']);
                 }
-                loadMainView($msg);
-            } else if ($_POST['action'] == 'upProd') {
-                if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
-                    upUser($_POST['id'], $_POST['nom'], $_POST['rol'], $_POST['usuari']);
-                    echo "action up";
-                    unset($_POST);
+
+                loadMainView();
+            }else if ($_POST['action'] == 'upProd') {
+                if (isset($_POST['nomProd']) && isset($_POST['descripcio']) && isset($_POST['preu']) && isset($_POST['foto']) && isset($_POST['stock']) && isset($_POST['menu']) && isset($_POST['mida'])) {
+                    upProd($_POST['id'],$_POST['nom'], $_POST['descripcio'],$_POST['preu'] ,$_POST['foto'],$_POST['stock'], $_POST['menu'],$_POST['mida']);
+                   
                 } else {
+                    echo "<h1>NO VA NO VA NO VA</h1>";
                 }
-            } else {
                 loadMainView();
             }
-
         } else {
             loadMainView();
         }

@@ -36,6 +36,12 @@
 						</div>
 					</div>
                     <div class="form-group row">
+						<label for="preu" class="col-sm-2 col-form-label font-weight-bold">Preu</label>
+						<div class="col-sm-10">
+							<input type="number" class="form-control" name="preu" id="preu" required>
+						</div>
+					</div>
+                    <div class="form-group row">
 						<label for="foto" class="col-sm-2 col-form-label font-weight-bold">Foto</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="foto" name="foto" value="<?php echo $producte[0]['foto']; ?>">

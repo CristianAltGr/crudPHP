@@ -21,27 +21,59 @@
 			<div class="text-left">
 				<form method="POST" action="./index.php">
 					<div class="form-group row">
-						<label for="nom" class="col-sm-2 col-form-label font-weight-bold">Nom</label>
+						<label for="nomProd" class="col-sm-2 col-form-label font-weight-bold">Nom</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="nom" id="nom" required>
+							<input type="text" class="form-control" name="nomProd" id="nomProd" required>
 						</div>
 					</div>
                     <div class="form-group row">
-						<label for="ensenyament" class="col-sm-2 col-form-label font-weight-bold">Rol</label>
+						<label for="descripcio" class="col-sm-2 col-form-label font-weight-bold">Descripcio</label>
 						<div class="col-sm-10">
-							<select name="rol" id="rol" class="form-control" required>
-								<option value="admin">Admin</option>
-								<option value="editor">Editor</option>
+							<textarea rows="10" type="text" class="form-control" name="descripcio" id="descripcio" required></textarea>
+						</div>
+					</div>
+                    <div class="form-group row">
+						<label for="preu" class="col-sm-2 col-form-label font-weight-bold">Preu</label>
+						<div class="col-sm-10">
+							<input type="number" class="form-control" name="preu" id="preu" required>
+						</div>
+					</div>
+                    <div class="form-group row">
+						<label for="foto" class="col-sm-2 col-form-label font-weight-bold">Foto</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="foto" id="foto" required>
+						</div>
+					</div>
+                    <div class="form-group row">
+						<label for="stock" class="col-sm-2 col-form-label font-weight-bold">Stock</label>
+						<div class="col-sm-10">
+							<select name="stock" id="stock" class="form-control" required>
+								<option value="true">1</option>
+								<option value="false">0</option>
+						</select>
+						</div>
+					</div>
+                    <div class="form-group row">
+						<label for="menu" class="col-sm-2 col-form-label font-weight-bold">Menu</label>
+						<div class="col-sm-10">
+							<select name="menu" id="menu" class="form-control" required>
+								<option value="true">1</option>
+								<option value="false">0</option>
 						</select>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="cognoms" class="col-sm-2 col-form-label font-weight-bold">Usuari</label>
+						<label for="mida" class="col-sm-2 col-form-label font-weight-bold">Mida</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="usuari" id="usuari" required>
+							<select name="mida" id="mida" class="form-control" required>
+								<option value="m">M</option>
+								<option value="l">L</option>
+                                <option value="xl">XL</option>
+                                <option value ="xxl">XXL</option>
+						</select>
 						</div>
 					</div>
-					<input type="hidden" name="action" value="add">
+					<input type="hidden" name="action" value="addProd">
 					<div class="text-right">
 						<button type="submit" class="btn btn-primary">Desar</button>
 						<a class="btn btn-secondary" role="button" href="./index.php">Sortir</a>

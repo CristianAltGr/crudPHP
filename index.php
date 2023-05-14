@@ -83,7 +83,7 @@
                 } else {
                     echo "no va jefe";
                 }
-                loadMainView($msg);
+                loadMainView($msg); //TODO esto de aqui nose que hace, en verdad no deberia acepatr parametros
             } else if ($_POST['action'] == 'up') {
                 if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
                     upUser($_POST['id'], $_POST['nom'], $_POST['rol'], $_POST['usuari']);

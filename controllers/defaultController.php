@@ -3,7 +3,7 @@
  */
 require("./entities/Producte.php");
 require("./entities/User.php");
-listProducts();
+
 function listUsers()
 {
     //va a ser una variable
@@ -11,7 +11,8 @@ function listUsers()
     require_once("./view/viewListUsers.php");
 }
 
-function listProducts() {
+function listProducts()
+{
     $producte = getProducts();
     require_once("./view/viewListProducts.php");
 }
@@ -61,32 +62,44 @@ function loadShowUserView($id)
 
 
 // PRODUCTE
-function loadShowProducteView($id) {
+function loadShowProducteView($id)
+{
     $producte = getProducte($id);
     require_once("./view/viewProduct.php");
 }
 
-function loadEditProdView($id) {
+function loadEditProdView($id)
+{
     $producte = getProducte($id);
     require_once("./view/viewProductModify.php");
 }
 
-function deleteProd($id) {
+function deleteProd($id)
+{
     modDeleteProd($id);
     require_once("./entities/Producte.php");
 
 }
 
-function loadNewProdView() {
+function loadNewProdView()
+{
     require_once("./view/viewNewProduct.php");
 }
 
-function addProducte($nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides) {
+function addProducte($nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides)
+{
     modAddProducte($nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides);
 
 }
 
-function upProd($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides) {
+function loadUserSesion()
+{
+    $users = getUsers();
+    require_once("./view/viewLoginUser.php");
+}
+
+function upProd($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides)
+{
     modUpProducte($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides);
 
 }

@@ -102,7 +102,7 @@ function modConnectProducte()
 				// use exec() because no results are returned
 				if ($GLOBALS['conn']->exec($sql)) {
 					return ["Success" => "Producte modificat correctament"];
-	
+						
 				}
 				else {
 					return ["Error" => "L'usuari no s'ha modificat"];

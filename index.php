@@ -91,13 +91,13 @@
                 $msg = null;
 
                 if (isset($_POST['nomProd']) && isset($_POST['descripcio']) && isset($_POST['preu']) && isset($_POST['foto']) && isset($_POST['stock']) && isset($_POST['menu']) && isset($_POST['mida'])) {
-                    addProducte($_POST['nom'], $_POST['descripcio'],$_POST['preu'] ,$_POST['foto'],$_POST['stock'], $_POST['menu'],$_POST['mida']);
+                    addProducte($_POST['nomProd'], $_POST['descripcio'],$_POST['preu'] ,$_POST['foto'],$_POST['stock'], $_POST['menu'],$_POST['mida']);
                 }
 
                 loadMainView();
             }else if ($_POST['action'] == 'upProd') {
                 if (isset($_POST['nomProd']) && isset($_POST['descripcio']) && isset($_POST['preu']) && isset($_POST['foto']) && isset($_POST['stock']) && isset($_POST['menu']) && isset($_POST['mida'])) {
-                    upProd($_POST['id'],$_POST['nom'], $_POST['descripcio'],$_POST['preu'] ,$_POST['foto'],$_POST['stock'], $_POST['menu'],$_POST['mida']);
+                    upProd($_POST['id'],$_POST['nomProd'], $_POST['descripcio'],$_POST['preu'] ,$_POST['foto'],$_POST['stock'], $_POST['menu'],$_POST['mida']);
                    
                 } else {
                     echo "<h1>NO VA NO VA NO VA</h1>";

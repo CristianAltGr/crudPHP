@@ -38,7 +38,7 @@
                     <div class="form-group row">
 						<label for="preu" class="col-sm-2 col-form-label font-weight-bold">Preu</label>
 						<div class="col-sm-10">
-							<input type="number" class="form-control" name="preu" id="preu" required>
+							<input type="number" class="form-control" name="preu" id="preu" required value="<?php echo $producte[0]['preu']; ?>">
 						</div>
 					</div>
                     <div class="form-group row">
@@ -59,7 +59,21 @@
 							<input type="text" class="form-control" id="menu" name="menu" value="<?php echo $producte[0]['menu']; ?>">
 						</div>
 					</div>
-
+                    <div class="form-group row">
+						<label for="mida" class="col-sm-2 col-form-label font-weight-bold">Mida</label>
+						<div class="col-sm-10">
+                        <?php
+							$mida = $producte[0]['mides']; 
+							echo '<select name="mida" id="mida" class="form-control" required>';
+							echo "<option value='m'" . ($mida == 'm' ? 'selected' : '') . ">M</option>";
+							echo "<option value='l'" . ($mida == 'l' ? 'selected' : '') . ">L</option>";
+                            echo "<option value='xl'" . ($mida == 'xl' ? 'selected' : '') . ">XL</option>";
+							echo "<option value='xxl'" . ($mida == 'xxl' ? 'selected' : '') . ">XXL</option>";
+							echo "</select>";
+							?>
+						</div>
+						</div>
+                        </div>
                     <input type="hidden" name="action" value="upProd">
 
 					<div class="text-right">

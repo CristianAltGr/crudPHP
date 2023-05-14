@@ -38,6 +38,42 @@ function modConnectProducte()
 			}
 	}
 
-    
+	function getProducte($id) {
+		modConnectProducte();
+			
+			try {
+				if ($id != null) {
+					$stmt = $GLOBALS['conn']->prepare("SELECT * FROM producte WHERE id=" . $id); 
+				}
+				else {
+					$stmt = $GLOBALS['conn']->prepare("SELECT * FROM producte ORDER BY id ASC"); 
+				}
+				$stmt->execute();
+	
+				$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				
+				return $result;
+			}
+			catch(PDOException $e) {
+				return ["Error" => $e->getMessage()];
+			}
+	}
+
+    function modDeleteProd($id) {
+		modConnectProducte();
+		try {
+			$sql = "DELETE FROM producte WHERE id=".$id;
+			// use exec() because no results are returned
+			if ($GLOBALS['conn']->exec($sql)){
+				return ["Success" => "Producte eliminat correctament"];
+			}
+			else {
+				return ["Error" => "El producte no s'ha eliminat"];
+			}
+		}
+		catch(PDOException $e) {
+			return ["Error" => $e->getMessage()];
+		}
+	}
 
 ?>

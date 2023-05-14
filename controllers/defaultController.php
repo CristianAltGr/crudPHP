@@ -33,12 +33,9 @@ function addUser($nom, $rol, $usuari)
 {
     // para quitar los datos de $_POST, he probado con unset($_POST) pero no funciona
     //el header evita q cuando se actualize la pagina se repitan los mismos inserts
-    $self = $_SERVER['PHP_SELF'];
-    modAddUser($nom, $rol, $usuari);
-    header("location: $self");
-
-
+    return modAddUser($nom, $rol, $usuari);
 }
+
 function loadMainView()
 {
     listUsers();
@@ -61,6 +58,23 @@ function loadShowUserView($id)
     require_once("./view/viewUser.php");
 }
 
+
+// PRODUCTE
+function loadShowProducteView($id) {
+    $producte = getProducte($id);
+    require_once("./view/viewProduct.php");
+}
+
+function loadEditProdView($id) {
+    $producte = getProducte($id);
+    require_once("./view/viewProductModify.php");
+}
+
+function deleteProd($id) {
+    modDeleteProd($id);
+    require_once("./entities/Producte.php");
+
+}
 
 
 ?>

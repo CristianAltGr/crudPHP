@@ -10,7 +10,7 @@
                             <th class="align-middle">STOCK</th>
                             <th class="align-middle">MENU</th>
 							<th class="align-middle">MIDES</th>
-							<th class="align-middle text-right"><a class="btn btn-primary" role="button" href="?action=new">Afegir</a></th>
+							<th class="align-middle text-right"><a class="btn btn-primary" role="button" href="?action=newProd">Afegir</a></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -28,9 +28,9 @@
 								echo "<td class='align-middle'>" . $row['mides'] . "</td>";
 
 								echo "<td class='align-middle'>";
-								echo "<a class='btn btn-success' role='button' href='?action=show&id=".$row['id']."'>Mostrar</a> ";
-								echo "<a class='btn btn-warning' role='button' href='?action=edit&id=".$row['id']."'>Editar</a> ";
-								echo "<a class='btn btn-danger' role='button' href='?action=delete&id=".$row['id']."'>Eliminar</a> ";
+								echo "<a class='btn btn-success' role='button' href='?action=showProd&id=".$row['id']."'>Mostrar</a> ";
+								echo "<a class='btn btn-warning' role='button' href='?action=editProd&id=".$row['id']."'>Editar</a> ";
+								echo "<a class='btn btn-danger' role='button' href='?action=deleteProd&id=".$row['id']."'>Eliminar</a> ";
 								echo "</td>";
 								echo "</tr>";
 							}

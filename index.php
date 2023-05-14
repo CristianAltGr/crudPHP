@@ -23,7 +23,7 @@
         <?php
         require("./controllers/defaultController.php");
 
-
+        //action && post user
         if (isset($_GET['action'])) {
 
             $accio = $_GET['action'];
@@ -44,6 +44,23 @@
 
             } else if ($accio == 'new') {
                 loadNewUserView();
+
+            } else if($accio == 'showProd') {
+                loadShowProducteView($_GET['id']);
+
+            } else if($accio == 'editProd') {
+                
+                if (isset($_GET['id'])) {
+                    loadEditProdView($_GET['id']);
+                }
+            } else if ($accio == 'deleteProd') {
+
+                if (isset($_GET['id'])) {
+                    deleteProd($_GET['id']);
+                }
+                loadMainView();
+            } else if ($accio == 'newProd') {
+                
             }
 
         } else if (isset($_POST['action'])) {
@@ -54,6 +71,7 @@
 
                 if (isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
                     $msg = addUser($_POST['nom'], $_POST['rol'], $_POST['usuari']);
+                    header('Location: index.php');
                 } else {
                     echo "no va jefe";
                 }
@@ -66,6 +84,52 @@
                 } else {
                 }
                 loadMainView();
+            }else if($_POST['action'] == 'addProd') {
+
+            }
+            //POST AND GET PRODUCTE
+            //POST AND GET PRODUCTE
+        }else if (isset($_GET['action'])) {
+
+            $accio = $_GET['action'];
+
+            if ($accio == 'showProd') {
+                loadShowProducteView($_GET['id']);
+            } else if ($accio == 'editProd') {
+
+                if (isset($_GET['id'])) {
+                    loadEditUserView($_GET['id']);
+                }
+            } else if ($accio == 'deleteProd') {
+
+                if (isset($_GET['id'])) {
+                    deleteUser($_GET['id']);
+                }
+                loadMainView();
+
+            } else if ($accio == 'newProd') {
+          
+            }
+
+        } else if (isset($_POST['action'])) {
+            if ($_POST['action'] == 'addProd') {
+             
+                $msg = null;
+
+                if (isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
+                    $msg = addUser($_POST['nom'], $_POST['rol'], $_POST['usuari']);
+                    header('Location: index.php');
+                } else {
+                    echo "no va jefe";
+                }
+                loadMainView($msg);
+            } else if ($_POST['action'] == 'upProd') {
+                if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
+                    upUser($_POST['id'], $_POST['nom'], $_POST['rol'], $_POST['usuari']);
+                    echo "action up";
+                    unset($_POST);
+                } else {
+                }
             } else {
                 loadMainView();
             }
@@ -73,6 +137,8 @@
         } else {
             loadMainView();
         }
+
+        
         ?>
     </div>
 </body>

@@ -99,7 +99,6 @@ function modAddUser($nom, $rol, $usuari) {
 			$sql = "INSERT INTO user (nom, rol, usuari) VALUES ('" . $nom . "', '" . $rol . "', '" . $usuari ."')";
 			// use exec() because no results are returned
 			if ($GLOBALS['conn']->exec($sql)) {
-				header('index.php');
 				return ["Success" => "Usuari afegit correctament"];
 			}
 			else {

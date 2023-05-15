@@ -66,10 +66,10 @@
 						<label for="mida" class="col-sm-2 col-form-label font-weight-bold">Mida</label>
 						<div class="col-sm-10">
 							<select name="mida" id="mida" class="form-control" required>
-								<option value="m">M</option>
-								<option value="l">L</option>
-                                <option value="xl">XL</option>
-                                <option value ="xxl">XXL</option>
+								<option value="M">M</option>
+								<option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value ="XXL">XXL</option>
 						</select>
 						</div>
 					</div>

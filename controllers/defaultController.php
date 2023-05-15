@@ -60,6 +60,11 @@ function loadShowUserView($id)
     require_once("./view/viewUser.php");
 }
 
+function listProdDefault() {
+    $producte = getProducts();
+    require_once("./view/viewListProductsDef.php");
+}
+
 
 // PRODUCTE
 function loadShowProducteView($id)
@@ -94,8 +99,7 @@ function addProducte($nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides)
 
 function loadUserSesion()
 {
-    $users = getUsers();
-    require_once("./view/viewLoginUser.php");
+     require_once("./view/viewLoginUser.php");
 }
 
 function upProd($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides)

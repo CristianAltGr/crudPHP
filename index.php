@@ -106,12 +106,15 @@
                 if (isset($_POST['nomProd']) && isset($_POST['descripcio']) && isset($_POST['preu']) && isset($_POST['foto']) && isset($_POST['stock']) && isset($_POST['menu']) && isset($_POST['mida'])) {
                     upProd($_POST['id'], $_POST['nomProd'], $_POST['descripcio'], $_POST['preu'], $_POST['foto'], $_POST['stock'], $_POST['menu'], $_POST['mida']);
 
-                } else {
                 }
+            } else if ($_POST['action'] == 'logUser') {
+                passUserSesion();
+            } else {
                 loadMainView();
+
             }
         } else {
-            loadMainView();
+            listProdDefault();
         }
 
 

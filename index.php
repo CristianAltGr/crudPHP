@@ -83,7 +83,7 @@
                 } else {
                     echo "no va jefe";
                 }
-                loadMainView($msg); //TODO esto de aqui nose que hace, en verdad no deberia acepatr parametros
+                loadMainView(); 
             } else if ($_POST['action'] == 'up') {
                 if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
                     upUser($_POST['id'], $_POST['nom'], $_POST['rol'], $_POST['usuari']);
@@ -107,7 +107,6 @@
                     upProd($_POST['id'], $_POST['nomProd'], $_POST['descripcio'], $_POST['preu'], $_POST['foto'], $_POST['stock'], $_POST['menu'], $_POST['mida']);
 
                 } else {
-                    echo "<h1>NO VA NO VA NO VA</h1>";
                 }
                 loadMainView();
             }
@@ -119,7 +118,7 @@
         ?>
     </div>
 </body>
-<footer class="bg-dark text-white fixed-bottom py-2 ">
+<!--<footer class="bg-dark text-white fixed-bottom py-15 ">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -129,6 +128,6 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> -->
 
 </html>

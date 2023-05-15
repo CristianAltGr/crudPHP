@@ -83,7 +83,7 @@
                 } else {
                     echo "no va jefe";
                 }
-                loadMainView(); 
+                loadMainView();
             } else if ($_POST['action'] == 'up') {
                 if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
                     upUser($_POST['id'], $_POST['nom'], $_POST['rol'], $_POST['usuari']);
@@ -118,7 +118,7 @@
         ?>
     </div>
 </body>
-<!--<footer class="bg-dark text-white fixed-bottom py-0">
+<footer class="bg-dark text-white mt-5 py-0">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -128,6 +128,6 @@
             </div>
         </div>
     </div>
-</footer> 
+</footer>
 
 </html>

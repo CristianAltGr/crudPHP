@@ -88,12 +88,15 @@ function modUpdateUser($id, $nom, $rol, $usuari)
 }
 
 
-function modAddUser($nom, $rol, $usuari)
+function modAddUser($nom, $rol, $usuari, $password)
 {
 	modConnectUser();
 
+	$frase = 'AvuiFaBonsolNosabran%Dequevaaquestacontrasenya-#^';
+	$missatgeDigest = hash('sha512', $password . $frase);
+
 	try {
-		$sql = "INSERT INTO user (nom, rol, usuari) VALUES ('" . $nom . "', '" . $rol . "', '" . $usuari . "')";
+		$sql = "INSERT INTO user (nom, rol, usuari, password) VALUES ('" . $nom . "', '" . $rol . "', '" . $usuari . "', '" . $missatgeDigest . "')";
 		// use exec() because no results are returned
 		if ($GLOBALS['conn']->exec($sql)) {
 			return ["Success" => "Usuari afegit correctament"];

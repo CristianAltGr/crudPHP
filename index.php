@@ -20,7 +20,7 @@
         <h1>Original Kebab House</h1>
         <?php
         session_start();
-        $logStatus = isset($_SESSION["nameSesion"]) ? "Log OUT" : "Log IN";
+        $logStatus = isset($_SESSION["name"]) ? "Log OUT" : "Log IN";
         echo '<a href="?action=login" class="btn btn-secondary btn-sm" tabindex="-1" role="button" aria-disabled="true">' . $logStatus . '</a>';
         ?>
     </header>
@@ -77,8 +77,8 @@
                 // Aquests els desem a la variable $msg i els enviem a la vista principal
                 $msg = null;
 
-                if (isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
-                    $msg = addUser($_POST['nom'], $_POST['rol'], $_POST['usuari']);
+                if (isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari']) && isset($_POST['password'])) {
+                    $msg = addUser($_POST['nom'], $_POST['rol'], $_POST['usuari'], $_POST['password']);
                     header('Location: index.php');
                 } else {
                     echo "no va jefe";
@@ -107,8 +107,8 @@
                     upProd($_POST['id'], $_POST['nomProd'], $_POST['descripcio'], $_POST['preu'], $_POST['foto'], $_POST['stock'], $_POST['menu'], $_POST['mida']);
 
                 }
-            } else if ($_POST['action'] == 'logUser') {
-                passUserSesion();
+            } else if ($_POST['action'] == 'logUser' && isset($_POST['nameUser']) && $_POST['passwordUser']) {
+                passUserSesion($_POST['nameUser'], $_POST['passwordUser']);
             } else {
                 loadMainView();
 

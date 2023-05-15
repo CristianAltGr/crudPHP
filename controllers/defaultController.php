@@ -30,11 +30,11 @@ function upUser($id, $nom, $rol, $usuari)
     return modUpdateUser($id, $nom, $rol, $usuari);
 }
 
-function addUser($nom, $rol, $usuari)
+function addUser($nom, $rol, $usuari, $password)
 {
     // para quitar los datos de $_POST, he probado con unset($_POST) pero no funciona
     //el header evita q cuando se actualize la pagina se repitan los mismos inserts
-    return modAddUser($nom, $rol, $usuari);
+    return modAddUser($nom, $rol, $usuari, $password);
 }
 
 function loadMainView()
@@ -103,11 +103,11 @@ function loadUserSesion()
     require_once("./view/viewLoginUser.php");
 }
 
-function passUserSesion()
+function passUserSesion($nom, $contrasenya)
 {
     $users = getUsers();
     require_once("./controllers/login.php");
-    checkUser();
+    checkUser($users, $nom, $contrasenya);
 }
 
 function upProd($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides)

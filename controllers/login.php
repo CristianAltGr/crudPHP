@@ -1,30 +1,30 @@
 <?php
 
-function checkUser()
+function checkUser($users, $nom, $contrasenya)
 {
+    session_start();
     //rebem paramtres form
-    $user = isset($_POST["name"]) ? $_POST["name"] : "Desconegut";
-    $contrasenya = isset($_POST["pass"]) ? $_POST["password"] : "Desconegut";
+    $rol = "";
+    //param logica user
     $frase = 'AvuiFaBonsolNosabran%Dequevaaquestacontrasenya-#^';
     $missatgeDigest = hash('sha512', $contrasenya . $frase);
     $login = false;
-    $rol = null;
-    //  EN ESTA PÀGINA COMPROVAMOS SI EL USUARIO EXISTE EN NUESTRA BD I REDIRIGIMOS A HOME DE CADA UNO TMB SI NO EXISTE 
-    while (current($users) !== FALSE) {
+    $i = 0;
 
-        if (key($users) == $user && $missatgeDigest == $users[key($users)]) {
+    while (!$login && count($users) > $i) {
+        echo "vuelta";
+        if ($users[$i]['nom'] == $nom && $users[$i]['password'] == $missatgeDigest) {
             $login = true;
-            $rol = $users["rol"];
+            $rol = $users[$i]["rol"];
+            echo "exito";
         }
-        next($users);
+        $i++;
     }
 
     if ($login) {
-        $_SESSION["name"] = isset($_POST["name"]) ? $_POST["name"] : $_SESSION["name"];
+        $_SESSION["name"] = $nom;
         $_SESSION["rol"] = $rol;
-        header("Location: ./index.php");
-    } else {
-        exit();
     }
+    header("Location: ./index.php");
 }
 ?>

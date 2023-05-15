@@ -25,7 +25,7 @@
         <?php
         session_start();
         echo '<div>';
-        if (isset($_SESSION["name"])) { //Aqui poner un link a la pagina de hacer logout
+        if (isset($_SESSION["name"])) {
             echo '<a href="?action=logout" class="btn btn-secondary btn-sm" tabindex="-1" role="button" aria-disabled="true"> Log OUT</a>';
         } else {
             echo '<a href="?action=new" class="btn btn-secondary btn-sm m-1" tabindex="-1" role="button" aria-disabled="true"> Sign IN</a>';

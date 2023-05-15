@@ -25,6 +25,21 @@ function checkUser($users, $nom, $contrasenya)
         $_SESSION["name"] = $nom;
         $_SESSION["rol"] = $rol;
     }
+
+    if (isset($_SESSION["rol"]) && $_SESSION["rol"] = "admin") {
+        header("Location: ./index.php?action=show");
+    } elseif (isset($_SESSION["rol"]) && $_SESSION["rol"] = "editor") {
+        header("Location: ./index.php?action=showProd");
+    } else {
+        header("Location: ./index.php");
+    }
+}
+
+function logoutUser()
+{
+    session_start();
+    session_unset();
+    session_destroy();
     header("Location: ./index.php");
 }
 ?>

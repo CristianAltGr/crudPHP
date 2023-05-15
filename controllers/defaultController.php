@@ -110,13 +110,15 @@ function passUserSesion($nom, $contrasenya)
     checkUser($users, $nom, $contrasenya);
 }
 
+function loadLogoutSesion()
+{
+    require_once("./controllers/login.php");
+    logoutUser();
+}
+
 function upProd($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides)
 {
     modUpProducte($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides);
 
 }
-
-
-
-
 ?>

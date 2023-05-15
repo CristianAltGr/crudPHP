@@ -14,32 +14,49 @@
 
 <body>
     <header class="bg-white py-3 mb-3 border-bottom border-gray d-flex justify-content-around align-items-center">
-        <img id="fotoHeader"
-            src="https://img.freepik.com/vector-gratis/plantilla-logotipo-shawarma-dibujado-mano_23-2149540555.jpg?w=740&t=st=1683742873~exp=1683743473~hmac=80bab058b93071ec91ddca945026be48ab704923dab962833344dd3265b55b0f"
-            alt="logo kebab">
-        <h1>Original Kebab House</h1>
+        <a href="./index.php">
+            <img id="fotoHeader"
+                src="https://img.freepik.com/vector-gratis/plantilla-logotipo-shawarma-dibujado-mano_23-2149540555.jpg?w=740&t=st=1683742873~exp=1683743473~hmac=80bab058b93071ec91ddca945026be48ab704923dab962833344dd3265b55b0f"
+                alt="logo kebab">
+        </a>
+        <a href="./index.php">
+            <h1>Original Kebab House</h1>
+        </a>
         <?php
         session_start();
-        $logStatus = isset($_SESSION["name"]) ? "Log OUT" : "Log IN";
-        echo '<a href="?action=login" class="btn btn-secondary btn-sm" tabindex="-1" role="button" aria-disabled="true">' . $logStatus . '</a>';
+        echo '<div>';
+        if (isset($_SESSION["name"])) { //Aqui poner un link a la pagina de hacer logout
+            echo '<a href="?action=logout" class="btn btn-secondary btn-sm" tabindex="-1" role="button" aria-disabled="true"> Log OUT</a>';
+        } else {
+            echo '<a href="?action=new" class="btn btn-secondary btn-sm m-1" tabindex="-1" role="button" aria-disabled="true"> Sign IN</a>';
+            echo '<a href="?action=login" class="btn btn-secondary btn-sm m-1" tabindex="-1" role="button" aria-disabled="true"> Log IN</a>';
+        }
+        echo '</div>';
         ?>
     </header>
-    <div class="container">
+    <div class="container ">
         <?php
         require("./controllers/defaultController.php");
+
+        /*Para ordenar las pàginas nos tenemos que fijar en el ejemplo i hacer isset($_SESSION["rol"]) i 
+        $_SESSION["rol"] == "admin" o $_SESSION["rol"] == editor(no me acuerdo com estaba en la db) 
+        
+        a partir de
+        aqui ir ordenando la vistas i poniendo los enlaces segun, hay un ejemplo en login.php i
+         mas abajo hay otro pero dirige mal al ahacer login porque tendria que ser la lista entera i los estoy mandando al producto o ususario concretos sin id  deberiamos ponerlos en las listas de productos o usuarios*/
 
         //action && post user
         if (isset($_GET['action'])) {
 
             $accio = $_GET['action'];
 
-            if ($accio == 'show') {
+            if ($accio == 'show' && $_SESSION["rol"] = "admin") {
                 loadShowUserView($_GET['id']);
             } else if ($accio == 'edit') {
 
                 if (isset($_GET['id'])) {
                     loadEditUserView($_GET['id']);
-                }
+                } //aqui falta el else
             } else if ($accio == 'delete') {
 
                 if (isset($_GET['id'])) {
@@ -50,7 +67,7 @@
             } else if ($accio == 'new') {
                 loadNewUserView();
 
-            } else if ($accio == 'showProd') {
+            } else if ($accio == 'showProd' && $_SESSION["rol"] = "editor") {
                 loadShowProducteView($_GET['id']);
 
             } else if ($accio == 'editProd') {
@@ -68,8 +85,11 @@
                 loadNewProdView();
             } elseif ($accio == 'login') {
                 loadUserSesion();
+            } elseif ($accio == 'logout') {
+                loadLogoutSesion();
+            } else {
+                listProdDefault();
             }
-
             //POST
         } else if (isset($_POST['action'])) {
             if ($_POST['action'] == 'add') {
@@ -121,7 +141,7 @@
         ?>
     </div>
 </body>
-<footer class="bg-dark text-white mt-5 py-0">
+<footer class="bg-dark text-white mt-4 py-2">
     <div class="container">
         <div class="row">
             <div class="col text-center">

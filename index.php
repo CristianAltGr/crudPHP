@@ -118,7 +118,7 @@
         ?>
     </div>
 </body>
-<!--<footer class="bg-dark text-white fixed-bottom py-15 ">
+<!--<footer class="bg-dark text-white fixed-bottom py-0">
     <div class="container">
         <div class="row">
             <div class="col text-center">

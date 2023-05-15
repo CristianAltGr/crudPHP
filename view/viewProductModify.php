@@ -65,10 +65,10 @@
                         <?php
 							$mida = $producte[0]['mides']; 
 							echo '<select name="mida" id="mida" class="form-control" required>';
-							echo "<option value='m'" . ($mida == 'm' ? 'selected' : '') . ">M</option>";
-							echo "<option value='l'" . ($mida == 'l' ? 'selected' : '') . ">L</option>";
-                            echo "<option value='xl'" . ($mida == 'xl' ? 'selected' : '') . ">XL</option>";
-							echo "<option value='xxl'" . ($mida == 'xxl' ? 'selected' : '') . ">XXL</option>";
+							echo "<option value='M'" . ($mida == 'M' ? 'selected' : '') . ">M</option>";
+							echo "<option value='L'" . ($mida == 'L' ? 'selected' : '') . ">L</option>";
+                            echo "<option value='XL'" . ($mida == 'XL' ? 'selected' : '') . ">XL</option>";
+							echo "<option value='XXL'" . ($mida == 'XXL' ? 'selected' : '') . ">XXL</option>";
 							echo "</select>";
 							?>
 						</div>

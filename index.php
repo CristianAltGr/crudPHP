@@ -37,15 +37,6 @@
     <div class="container ">
         <?php
         require("./controllers/defaultController.php");
-
-        /*Para ordenar las pàginas nos tenemos que fijar en el ejemplo i hacer isset($_SESSION["rol"]) i 
-        $_SESSION["rol"] == "admin" o $_SESSION["rol"] == editor(no me acuerdo com estaba en la db) 
-        
-        a partir de
-        aqui ir ordenando la vistas i poniendo los enlaces segun, hay un ejemplo en login.php i
-         mas abajo hay otro pero dirige mal al ahacer login porque tendria que ser la lista entera i los estoy mandando al producto o ususario concretos sin id  deberiamos ponerlos en las listas de productos o usuarios*/
-
-        //action && post user
         if (isset($_GET['action'])) {
 
             $accio = $_GET['action'];
@@ -97,20 +88,17 @@
             //POST
         } else if (isset($_POST['action'])) {
             if ($_POST['action'] == 'add') {
-                // Exemple de com utilitzar els missatges que el model ens retorna.
-                // Aquests els desem a la variable $msg i els enviem a la vista principal
                 $msg = null;
 
                 if (isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari']) && isset($_POST['password'])) {
                     $msg = addUser($_POST['nom'], $_POST['rol'], $_POST['usuari'], $_POST['password']);
                     header('Location: index.php');
                 } else {
-                    echo "no va jefe";
                 }
                 loadMainView();
             } else if ($_POST['action'] == 'up') {
                 if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
-                    upUser($_POST['id'], $_POST['nom'], $_POST['rol'], $_POST['usuari']);
+                    upUser($_POST['id'], $_POST['nom'], $_POST['rol'], $_POST['usuari'], $_POST['password']);
                     echo "action up";
                     unset($_POST);
                 } else {
@@ -149,8 +137,6 @@
         } else {
             listProdDefault();
         }
-
-
         ?>
     </div>
 </body>

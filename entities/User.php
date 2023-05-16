@@ -68,12 +68,12 @@ function modDelete($id)
 
 }
 
-function modUpdateUser($id, $nom, $rol, $usuari)
+function modUpdateUser($id, $nom, $rol, $usuari, $password)
 {
 	modConnectUser();
 
 	try {
-		$sql = "UPDATE user SET nom='" . $nom . "', rol='" . $rol . "', usuari='" . $usuari . "'  WHERE id='" . $id . "'";
+		$sql = "UPDATE user SET nom='" . $nom . "', rol='" . $rol . "', usuari='" . $usuari . "', password='" . $password . "'  WHERE id='" . $id . "'";
 		// use exec() because no results are returned
 		if ($GLOBALS['conn']->exec($sql)) {
 			return ["Success" => "Usuari modificat correctament"];

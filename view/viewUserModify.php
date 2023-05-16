@@ -42,9 +42,15 @@
 						</div>
 					</div>
                     <div class="form-group row">
-						<label for="cognoms" class="col-sm-2 col-form-label font-weight-bold">Usuari</label>
+						<label for="usuari" class="col-sm-2 col-form-label font-weight-bold">Usuari</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="usuari" name="usuari" value="<?php echo $result[0]['usuari']; ?>">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="password" class="col-sm-2 col-form-label font-weight-bold">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="password" name="password" value="<?php echo $result[0]['password']; ?>">
 						</div>
 					</div>
                     <input type="hidden" name="action" value="up">

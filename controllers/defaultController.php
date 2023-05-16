@@ -25,9 +25,9 @@ function deleteUser($id)
 
 
 }
-function upUser($id, $nom, $rol, $usuari)
+function upUser($id, $nom, $rol, $usuari, $password)
 {
-    return modUpdateUser($id, $nom, $rol, $usuari);
+    return modUpdateUser($id, $nom, $rol, $usuari, $password);
 }
 
 function addUser($nom, $rol, $usuari, $password)

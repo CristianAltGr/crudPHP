@@ -83,7 +83,6 @@
             } else {
                 listProdDefault();
             }
-
             //POST
         } else if (isset($_POST['action'])) {
 
@@ -134,9 +133,6 @@
         } else {
             listProdDefault();
         }
-
-
-
         ?>
     </div>
 </body>

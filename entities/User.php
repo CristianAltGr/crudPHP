@@ -73,7 +73,11 @@ function modUpdateUser($id, $nom, $rol, $usuari, $password)
 	modConnectUser();
 
 	try {
-		$sql = "UPDATE user SET nom='" . $nom . "', rol='" . $rol . "', usuari='" . $usuari . "', password='" . $password . "'  WHERE id='" . $id . "'";
+
+		$frase = 'AvuiFaBonsolNosabran%Dequevaaquestacontrasenya-#^';
+		$missatgeDigest = hash('sha512', $password . $frase);
+
+		$sql = "UPDATE user SET nom='" . $nom . "', rol='" . $rol . "', usuari='" . $usuari . "', password='" . $missatgeDigest . "'  WHERE id='" . $id . "'";
 		// use exec() because no results are returned
 		if ($GLOBALS['conn']->exec($sql)) {
 			return ["Success" => "Usuari modificat correctament"];
@@ -92,18 +96,47 @@ function modAddUser($nom, $rol, $usuari, $password)
 {
 	modConnectUser();
 
-	$frase = 'AvuiFaBonsolNosabran%Dequevaaquestacontrasenya-#^';
-	$missatgeDigest = hash('sha512', $password . $frase);
+	$userExist = getUserByName($nom);
+
+	if (!$userExist) {
+
+		$frase = 'AvuiFaBonsolNosabran%Dequevaaquestacontrasenya-#^';
+		$missatgeDigest = hash('sha512', $password . $frase);
+
+		try {
+			$sql = "INSERT INTO user (nom, rol, usuari, password) VALUES ('" . $nom . "', '" . $rol . "', '" . $usuari . "', '" . $missatgeDigest . "')";
+			// use exec() because no results are returned
+			if ($GLOBALS['conn']->exec($sql)) {
+				return ["Success" => "Usuari afegit correctament"];
+			} else {
+				return ["Error" => "L'usuari no s'ha afegit"];
+			}
+		} catch (PDOException $e) {
+			return ["Error" => $e->getMessage()];
+		}
+	}
+}
+
+function getUserByName($nom)
+{
+
+	modConnectUser();
+
+	$userExist = false;
 
 	try {
-		$sql = "INSERT INTO user (nom, rol, usuari, password) VALUES ('" . $nom . "', '" . $rol . "', '" . $usuari . "', '" . $missatgeDigest . "')";
-		// use exec() because no results are returned
-		if ($GLOBALS['conn']->exec($sql)) {
-			return ["Success" => "Usuari afegit correctament"];
-		} else {
-			return ["Error" => "L'usuari no s'ha afegit"];
+		if ($nom != null) {
+			$stmt = $GLOBALS['conn']->prepare("SELECT * FROM user WHERE nom=" . $nom);
 		}
+
+		$stmt->execute();
+
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		$userExist = count($result) > 0 ? true : false;
+		var_dump($userExist);
 	} catch (PDOException $e) {
 		return ["Error" => $e->getMessage()];
 	}
+	return $userExist;
 }

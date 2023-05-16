@@ -57,5 +57,8 @@
             </div>
         </div>
     </form>
+    <div class="text-right mt-5 d-flex justify-content-around">
+        <a class="btn btn-secondary col-3" role="button" href="./index.php">Sortir</a>
+    </div>
 </div>
 </div>

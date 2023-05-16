@@ -37,93 +37,90 @@
     <div class="container ">
         <?php
         require("./controllers/defaultController.php");
+
         if (isset($_GET['action'])) {
 
             $accio = $_GET['action'];
 
-            if ($accio == 'show') {
-                if($_SESSION["rol"] == "admin") {
-                    loadShowUserView($_GET['id']);
-                } else {
-                    echo "T'has de loguejar com administrador";
-                }
-            } else if ($accio == 'edit') {
-
-                if (isset($_GET['id'])) {
-                    loadEditUserView($_GET['id']);
-                } //aqui falta el else
-            } else if ($accio == 'delete') {
-
-                if (isset($_GET['id'])) {
-                    deleteUser($_GET['id']);
-                }
-                loadMainView();
-
-            } else if ($accio == 'new') {
-                loadNewUserView();
-
-            } else if ($accio == 'showProd' && isset($_SESSION["rol"])&& $_SESSION["rol"] == "editor") {
-                loadShowProducteView($_GET['id']);
-
-            } else if ($accio == 'editProd') {
-
-                if (isset($_GET['id'])) {
-                    loadEditProdView($_GET['id']);
-                }
-            } else if ($accio == 'deleteProd') {
-
-                if (isset($_GET['id'])) {
-                    deleteProd($_GET['id']);
-                }
-                loadMainView();
-            } else if ($accio == 'newProd') {
-                loadNewProdView();
-            } elseif ($accio == 'login') {
+            if ($accio == 'login') { //Login l
                 loadUserSesion();
-            } elseif ($accio == 'logout') {
+            } elseif ($accio == 'logout') { //logout l 
                 loadLogoutSesion();
+            } else if ($accio == 'new') { //nuevo usurio l
+                loadNewUserView();
+            } else if ($accio == 'showProd' && isset($_GET['id'])) { // mostrar un prod l
+                loadShowProducteView($_GET['id']);
+            } else if (isset($_SESSION['rol'])) {
+
+                if ($_SESSION['rol'] == "admin") {
+
+                    if ($accio == 'show' && isset($_GET['id'])) { //mostrar un usuario pA
+                        loadShowUserView($_GET['id']);
+
+                    } else if ($accio == 'delete' && isset($_GET['id'])) { //Borrar user pA 
+                        deleteUser($_GET['id']);
+
+                    } else if ($accio == 'edit' && isset($_GET['id'])) { //Editar usuario pA 
+                        loadEditUserView($_GET['id']);
+
+                    } else {
+                        listUsers();
+                    }
+                } else if ($_SESSION['rol'] == "editor") {
+
+                    if ($accio == 'editProd' && isset($_GET['id'])) { // Editar producte pE
+                        loadEditProdView($_GET['id']);
+                    } else if ($accio == 'deleteProd' && isset($_GET['id'])) { // borrar producte pE
+                        deleteProd($_GET['id']);
+                    } else if ($accio == 'newProd') { // crear Prod pE
+                        loadNewProdView();
+                    } else {
+                        listProducts();
+                    }
+                } else {
+                    listProdDefault();
+                }
             } else {
                 listProdDefault();
             }
+
             //POST
         } else if (isset($_POST['action'])) {
-            if ($_POST['action'] == 'add') {
-                $msg = null;
 
-                if (isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari']) && isset($_POST['password'])) {
-                    $msg = addUser($_POST['nom'], $_POST['rol'], $_POST['usuari'], $_POST['password']);
-                    header('Location: index.php');
-                } else {
-                }
-                loadMainView();
-            } else if ($_POST['action'] == 'up') {
-                if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) {
+            if ($_POST['action'] == 'logUser') {
+
+                passUserSesion($_POST['nameUser'], $_POST['passwordUser']);
+
+            } else if ($_POST['action'] == 'add' && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari']) && isset($_POST['password'])) { //post pA
+        
+                addUser($_POST['nom'], $_POST['rol'], $_POST['usuari'], $_POST['password']);
+                header('Location: ./index.php');
+
+            } else if ($_SESSION['rol'] == "admin") {
+
+                if ($_POST['action'] == 'up' && isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['rol']) && isset($_POST['usuari'])) { //update pA
+        
                     upUser($_POST['id'], $_POST['nom'], $_POST['rol'], $_POST['usuari'], $_POST['password']);
-                    echo "action up";
                     unset($_POST);
+
                 } else {
-                    loadMainView();
-
+                    header('Location: ./index.php');
                 }
-                loadMainView();
-            } else if ($_POST['action'] == 'addProd') {
-                $msg = null;
+            } elseif ($_SESSION['rol'] == "editor") {
 
-                if (isset($_POST['nomProd']) && isset($_POST['descripcio']) && isset($_POST['preu']) && isset($_POST['foto']) && isset($_POST['stock']) && isset($_POST['menu']) && isset($_POST['mida'])) {
+                if ($_POST['action'] == 'addProd' && isset($_POST['nomProd']) && isset($_POST['descripcio']) && isset($_POST['preu']) && isset($_POST['foto']) && isset($_POST['stock']) && isset($_POST['menu']) && isset($_POST['mida'])) { //añadir producto pE
+        
                     addProducte($_POST['nomProd'], $_POST['descripcio'], $_POST['preu'], $_POST['foto'], $_POST['stock'], $_POST['menu'], $_POST['mida']);
-                }
 
-                loadMainView();
-            } else if ($_POST['action'] == 'upProd') {
-                if (isset($_POST['nomProd']) && isset($_POST['descripcio']) && isset($_POST['preu']) && isset($_POST['foto']) && isset($_POST['stock']) && isset($_POST['menu']) && isset($_POST['mida'])) {
+                } else if ($_POST['action'] == 'upProd' && isset($_POST['nomProd']) && isset($_POST['descripcio']) && isset($_POST['preu']) && isset($_POST['foto']) && isset($_POST['stock']) && isset($_POST['menu']) && isset($_POST['mida'])) { // editar producto pE
+        
                     upProd($_POST['id'], $_POST['nomProd'], $_POST['descripcio'], $_POST['preu'], $_POST['foto'], $_POST['stock'], $_POST['menu'], $_POST['mida']);
 
+                } else {
+                    header('Location: ./index.php');
                 }
-            } else if ($_POST['action'] == 'logUser' && isset($_POST['nameUser']) && $_POST['passwordUser']) {
-                passUserSesion($_POST['nameUser'], $_POST['passwordUser']);
             } else {
-                loadMainView();
-
+                header('Location: ./index.php');
             }
         } elseif (isset($_SESSION["rol"])) {
 
@@ -137,6 +134,9 @@
         } else {
             listProdDefault();
         }
+
+
+
         ?>
     </div>
 </body>

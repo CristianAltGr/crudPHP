@@ -21,9 +21,7 @@ function listProducts()
 function deleteUser($id)
 {
     modDelete($id);
-    require_once("./entities/User.php");
-
-
+    header("Location: ./index.php");
 }
 function upUser($id, $nom, $rol, $usuari, $password)
 {
@@ -35,12 +33,6 @@ function addUser($nom, $rol, $usuari, $password)
     // para quitar los datos de $_POST, he probado con unset($_POST) pero no funciona
     //el header evita q cuando se actualize la pagina se repitan los mismos inserts
     return modAddUser($nom, $rol, $usuari, $password);
-}
-
-function loadMainView()
-{
-    listUsers();
-    listProducts();
 }
 
 function loadEditUserView($id)
@@ -83,8 +75,7 @@ function loadEditProdView($id)
 function deleteProd($id)
 {
     modDeleteProd($id);
-    require_once("./entities/Producte.php");
-
+    header("Location: ./index.php");
 }
 
 function loadNewProdView()
@@ -95,7 +86,7 @@ function loadNewProdView()
 function addProducte($nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides)
 {
     modAddProducte($nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides);
-
+    header("Location: ./index.php");
 }
 
 function loadUserSesion()

@@ -50,7 +50,7 @@
 
             $accio = $_GET['action'];
 
-            if ($accio == 'show' && $_SESSION["rol"] = "admin") {
+            if ($accio == 'show' && $_SESSION["rol"] == "admin") {
                 loadShowUserView($_GET['id']);
             } else if ($accio == 'edit') {
 
@@ -67,7 +67,7 @@
             } else if ($accio == 'new') {
                 loadNewUserView();
 
-            } else if ($accio == 'showProd' && $_SESSION["rol"] = "editor") {
+            } else if ($accio == 'showProd' && $_SESSION["rol"] == "editor") {
                 loadShowProducteView($_GET['id']);
 
             } else if ($accio == 'editProd') {
@@ -132,6 +132,15 @@
             } else {
                 loadMainView();
 
+            }
+        } elseif (isset($_SESSION["rol"])) {
+
+            if ($_SESSION["rol"] == "admin") {
+                listUsers();
+            } elseif ($_SESSION["rol"] == "editor") {
+                listProducts();
+            } else {
+                listProdDefault();
             }
         } else {
             listProdDefault();

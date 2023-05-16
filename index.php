@@ -50,8 +50,12 @@
 
             $accio = $_GET['action'];
 
-            if ($accio == 'show' && $_SESSION["rol"] == "admin") {
-                loadShowUserView($_GET['id']);
+            if ($accio == 'show') {
+                if($_SESSION["rol"] == "admin") {
+                    loadShowUserView($_GET['id']);
+                } else {
+                    echo "T'has de loguejar com administrador";
+                }
             } else if ($accio == 'edit') {
 
                 if (isset($_GET['id'])) {
@@ -67,7 +71,7 @@
             } else if ($accio == 'new') {
                 loadNewUserView();
 
-            } else if ($accio == 'showProd' && $_SESSION["rol"] == "editor") {
+            } else if ($accio == 'showProd' && isset($_SESSION["rol"])&& $_SESSION["rol"] == "editor") {
                 loadShowProducteView($_GET['id']);
 
             } else if ($accio == 'editProd') {

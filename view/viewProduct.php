@@ -32,8 +32,7 @@
         <div class="form-group row">
             <label for="ensenyament" class="col-sm-2 col-form-label font-weight-bold">Foto</label>
             <div class="col-sm-10">
-                <!--<input type="text" readonly class="form-control-plaintext" id="ensenyament" value="<?php //echo $users[0]['foto']; ?>">-->
-                <td class='align-middle'><img src="<?php echo $producte[0]['foto']; ?>" id='imgProducte'></td>
+                <td class='align-middle'><img src="<?php echo $producte[0]['foto']; ?>" class='imgProducte'></td>
             </div>
         </div>
         <div class="form-group row">

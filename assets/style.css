@@ -15,7 +15,7 @@ a {
 
 h1 {
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 .sectionCard {
@@ -57,4 +57,10 @@ h1 {
     padding-bottom: 5px;
     padding-top: 5px;
     border-top: 1px rgb(150, 137, 137) solid;
+}
+
+.imgProducte{
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
 }

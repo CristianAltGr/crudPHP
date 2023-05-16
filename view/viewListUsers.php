@@ -1,6 +1,6 @@
 <section class="container col-10 border border-3 rounded">
 	<div class="table-responsive-sm">
-		<table class="table table-striped">
+		<table id="usersTable" class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
 					<th class="align-middle">ID</th>
@@ -29,7 +29,27 @@
 				}
 				?>
 			</tbody>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 	</div>
 </section>
+<script>
+	$(document).ready(function () {
+		$('#usersTable').DataTable({
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Catalan.json"
+			}
+		});
+	});
+		//Super importante poner el script de debajo en este punto no es un recurso que va al head sino no funciona
+</script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>

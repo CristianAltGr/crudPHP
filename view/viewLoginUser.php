@@ -3,7 +3,7 @@
         <div class="col-lg-6 mb-5">
             <div class="card mb-5">
                 <div class="card-body m-4">
-                    <form action="index.php" method="post" onsubmit="window.location.href = 'index.php';">
+                    <form action="./index.php" method="post" onsubmit="window.location.href = './index.php';">
                         <div class="form-group">
                             <label for="nameUser">NOM:</label>
                             <input type="text" class="form-control" name="nameUser" id="nameUser" required>

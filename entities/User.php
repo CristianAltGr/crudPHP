@@ -95,7 +95,7 @@ function modUpdateUser($id, $nom, $rol, $usuari, $password)
 function modAddUser($nom, $rol, $usuari, $password)
 {
 	modConnectUser();
-
+	//TODO mirar funcion que vaya con nombres
 	$userExist = getUserByName($nom);
 
 	if (!$userExist) {
@@ -119,21 +119,19 @@ function modAddUser($nom, $rol, $usuari, $password)
 
 function getUserByName($nom)
 {
-
+	//Comprovar que funcione la funcion
 	modConnectUser();
 
 	$userExist = false;
-
+	//TODO Arregla función se puede hacer un get users i tratar la info para ver si existe o no
 	try {
-		if ($nom != null) {
-			$stmt = $GLOBALS['conn']->prepare("SELECT * FROM user WHERE nom=" . $nom);
-		}
 
+		$stmt = $GLOBALS['conn']->prepare("SELECT * FROM user WHERE nom=" . $nom);
 		$stmt->execute();
 
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-		$userExist = count($result) > 0 ? true : false;
+		$userExist = $result->bindParam(':nom', $nom, PDO::PARAM_STR, 12);
 		var_dump($userExist);
 	} catch (PDOException $e) {
 		return ["Error" => $e->getMessage()];

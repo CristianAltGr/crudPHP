@@ -25,7 +25,8 @@ function deleteUser($id)
 }
 function upUser($id, $nom, $rol, $usuari, $password)
 {
-    return modUpdateUser($id, $nom, $rol, $usuari, $password);
+    modUpdateUser($id, $nom, $rol, $usuari, $password);
+    header("Location: ./index.php");
 }
 
 function addUser($nom, $rol, $usuari, $password)
@@ -110,6 +111,6 @@ function loadLogoutSesion()
 function upProd($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides)
 {
     modUpProducte($id, $nomProd, $descripcio, $preu, $foto, $stock, $menu, $mides);
-
+    header("Location: ./index.php");
 }
 ?>
